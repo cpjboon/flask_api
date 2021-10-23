@@ -13,7 +13,9 @@ COPY  ./flask_app/* /flask_app/
 
 EXPOSE 8080
 
-RUN useradd appuser
+RUN useradd appuser && \
+    mkdir /var/run/nginx && \
+    mkdir /var/www/html
 
 RUN chgrp -R 0 /var/log/nginx /var/run/nginx /var/www/html && \
 chmod -R g=u /var/log/nginx /var/run/nginx /var/www/html
