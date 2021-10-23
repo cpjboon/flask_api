@@ -25,8 +25,8 @@ WORKDIR /flask_app
 
 RUN chmod +x ./start.sh
 
-USER appuser
+RUN pip3 install -r /flask_app/requirements.txt --src /usr/local/src 
 
-RUN pip3 install -r /flask_app/requirements.txt --src /usr/local/src --user
+USER appuser
 
 CMD [ "./start.sh" ]
