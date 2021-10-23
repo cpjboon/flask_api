@@ -22,12 +22,12 @@ chmod -R g=u /var/log/nginx /var/run/nginx /var/www/html
 
 WORKDIR /flask_app
 
+RUN chmod +x ./start.sh
+
 RUN pip3 install -r /flask_app/requirements.txt --src /usr/local/src
 
 COPY ./conf/nginx.conf /etc/nginx
 
 USER appuser
-
-RUN chmod +x ./start.sh
 
 CMD [ "./start.sh" ]
