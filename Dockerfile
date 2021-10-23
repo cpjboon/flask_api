@@ -6,6 +6,8 @@ RUN dnf install -y nginx python38 python38-devel gcc
 
 COPY  ./flask_app/* /flask_app/
 
+EXPOSE 80
+
 RUN useradd appuser
 
 WORKDIR /flask_app
