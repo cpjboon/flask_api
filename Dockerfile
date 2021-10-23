@@ -15,10 +15,10 @@ EXPOSE 8080
 
 RUN useradd appuser
 
-USER appuser
-
 RUN chgrp -R 0 /var/log/nginx /var/run/nginx /var/www/html && \
 chmod -R g=u /var/log/nginx /var/run/nginx /var/www/html
+
+USER appuser
 
 WORKDIR /flask_app
 
