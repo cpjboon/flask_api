@@ -9,7 +9,8 @@ io.openshift.tags="flask, uWSGI"
 
 RUN dnf install -y nginx python38 python38-devel gcc
 
-COPY  ./flask_app/* /flask_app/
+COPY  ./flask_app/* /flask_app/ 
+COPY ./conf/nginx.conf /etc/nginx
 
 EXPOSE 8080
 
@@ -24,10 +25,8 @@ WORKDIR /flask_app
 
 RUN chmod +x ./start.sh
 
-RUN pip3 install -r /flask_app/requirements.txt --src /usr/local/src
-
-COPY ./conf/nginx.conf /etc/nginx
-
 USER appuser
+
+RUN pip3 install -r /flask_app/requirements.txt --src /usr/local/src
 
 CMD [ "./start.sh" ]
