@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 nginx
-#uwsgi --ini uswsgi.ini
+/home/appuser/.local/bin/uwsgi --ini uswsgi.ini
