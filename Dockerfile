@@ -20,13 +20,13 @@ RUN useradd appuser && \
 RUN chgrp -R 0 /var/log/nginx /var/run/nginx /var/www/html && \
 chmod -R g=u /var/log/nginx /var/run/nginx /var/www/html
 
-USER appuser
-
 WORKDIR /flask_app
 
 RUN pip3 install -r /flask_app/requirements.txt --src /usr/local/src
 
 COPY ./conf/nginx.conf /etc/nginx
+
+USER appuser
 
 RUN chmod +x ./start.sh
 
